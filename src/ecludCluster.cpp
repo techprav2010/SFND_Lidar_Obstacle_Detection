@@ -9,7 +9,7 @@ void clusterHelper(int indice, const std::vector<std::vector<float>> points, std
     cluster.push_back(indice);
     std::vector<int> nearest = tree->search(points[indice], distanceTol);
     for(int i: nearest){
-        if(processed[i]){
+        if(!processed[i]){
             clusterHelper( i, points, cluster, processed, tree, distanceTol);
         }
     }
@@ -32,6 +32,7 @@ std::vector<std::vector<int>> eucldCluster(const std::vector<std::vector<float>>
         }
         std::vector<int> cluster;
         clusterHelper( i, points, cluster, processed, tree, distanceTol);
+        clusters.push_back(cluster);
         i++;
     }
 

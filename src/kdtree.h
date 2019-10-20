@@ -72,7 +72,7 @@ struct KdTree {
     }
 
     void _searchHelper(std::vector<float> target, Node* node, unsigned int depth, float distanceTol, std::vector<int>& ids) {
-        if (node != NULL) return;
+        if (node == NULL) return;
 
         //is within range distanceTol?
         _checkPointInTol(target,node, distanceTol,ids);

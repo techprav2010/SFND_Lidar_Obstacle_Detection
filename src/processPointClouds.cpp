@@ -154,12 +154,12 @@ std::pair<typename pcl::PointCloud<PointT>::Ptr, typename pcl::PointCloud<PointT
         denom = sqrt(a*a + b*b + c*c);
 
         for(int index=0; index < cloud->points.size(); index++){
-            if(inliers.count(index>0))
+            if(inliers.count(index) > 0 )
                 continue;
             auto point = cloud->points[index];
             x4 = point.x;
             y4 = point.y;
-            z4 = point.y;
+            z4 = point.z;
 
             distance = fabs(a*x4 + b*y4 +c*z4+ d)/denom; // sqrt(a*a + b*b + c*c);
             if (distance  <= distanceTol)
